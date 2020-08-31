@@ -1,5 +1,10 @@
 #include <vector>
 
 namespace Statistics {
-    Stats ComputeStatistics(const std::vector<___>& );
+    struct Stats
+    {
+        double average,min,max;
+    };
+
+    Stats ComputeStatistics(const std::vector<double>& );
 }
