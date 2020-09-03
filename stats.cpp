@@ -5,7 +5,7 @@ template <typename TYPE1>
 double calculateAverage(const std::vector<TYPE1>& values)
 {
     double sum=0;
-    for(int i=0;i<values.size();i++)
+    for(unsigned int i=0;i<values.size();i++)
     {
         sum += values[i];
     }
@@ -19,7 +19,7 @@ TYPE1 calculateMin(const std::vector<TYPE1>& values)
 {
     TYPE1 min=values[0];
     
-    for(int i=1;i<values.size();i++)
+    for(unsigned int i=1;i<values.size();i++)
     {
         if(min > values[i])
             min = values[i];
@@ -34,7 +34,7 @@ TYPE1 calculateMax(const std::vector<TYPE1>& values)
 {
     TYPE1 max=values[0];
     
-    for(int i=1;i<values.size();i++)
+    for(unsigned int i=1;i<values.size();i++)
     {
         if(max < values[i])
             max = values[i];
