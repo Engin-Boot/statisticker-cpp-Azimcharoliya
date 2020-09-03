@@ -62,6 +62,7 @@ Statistics::Stats<TYPE1> Statistics::ComputeStatistics(const std::vector<TYPE1>&
     return computedValues;
 }
 
+/*Cannot be used in github compiler. Gives error in github but runs on local g++ compiler.
 template <>
 Statistics::Stats<char> Statistics::ComputeStatistics(const std::vector<char>& values) {
     //Implement statistics here
@@ -72,4 +73,4 @@ Statistics::Stats<char> Statistics::ComputeStatistics(const std::vector<char>& v
     computedValues.average = std::numeric_limits<double>::quiet_NaN();
     return computedValues;
 }
-
+*/
