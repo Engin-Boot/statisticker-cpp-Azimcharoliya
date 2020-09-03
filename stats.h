@@ -1,10 +1,14 @@
 #include <vector>
 
 namespace Statistics {
+    
+    template<class TYPE>
     struct Stats
     {
-        double average,min,max;
+        TYPE min,max;
+        double average;
     };
 
-    Stats ComputeStatistics(const std::vector<double>& );
+    template <typename TYPE1>
+    Stats<TYPE1> ComputeStatistics(const std::vector<TYPE1>& );
 }
