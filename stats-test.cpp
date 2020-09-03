@@ -14,7 +14,7 @@ TEST_CASE("reports average, minimum and maximum") {
 }
 
 TEST_CASE("reports average, minimum and maximum of vector of integers values") {
-    vector<int>values{1,2,3,4,5};
+    std::vector<int>values{1,2,3,4,5};
     auto computedStats = Statistics::ComputeStatistics(values);
     float epsilon = 0.001;
     REQUIRE(std::abs(computedStats.average - 3) < epsilon);
@@ -23,7 +23,7 @@ TEST_CASE("reports average, minimum and maximum of vector of integers values") {
 }
 
 TEST_CASE("reports average, minimum and maximum of vector of float values") {
-    vector<float>values{1.1,2.2,3.3,4.4,5.5};
+    std::vector<float>values{1.1,2.2,3.3,4.4,5.5};
     auto computedStats = Statistics::ComputeStatistics(values);
     float epsilon = 0.001;
     REQUIRE(std::abs(computedStats.average - 3.3) < epsilon);
@@ -39,8 +39,8 @@ TEST_CASE("average is NaN for empty array") {
     REQUIRE(std::isnan(computedStats.min));
 }
 
-TEST_CASE("average is NaN for vector of char values.) {
-    vector<char>values{'a','b','e','g','y'};
+TEST_CASE("average is NaN for vector of char values") {
+    std::vector<char>values{'a','b','e','g','y'};
     auto computedStats = Statistics::ComputeStatistics(values);
     
     REQUIRE(std::isnan(computedStats.average));
