@@ -1,7 +1,8 @@
 #include "stats.h"
 #include "limits"
 
-double calculateAverage(const std::vector<double>& values)
+template <typename TYPE1>
+double calculateAverage(const std::vector<TYPE1>& values)
 {
     double sum=0;
     for(int i=0;i<values.size();i++)
@@ -12,9 +13,11 @@ double calculateAverage(const std::vector<double>& values)
     return sum;
 }
 
-double calculateMin(const std::vector<double>& values)
+
+template <typename TYPE1>
+TYPE1 calculateMin(const std::vector<TYPE1>& values)
 {
-    double min=values[0];
+    TYPE1 min=values[0];
     
     for(int i=1;i<values.size();i++)
     {
@@ -26,9 +29,10 @@ double calculateMin(const std::vector<double>& values)
 }
 
 
-double calculateMax(const std::vector<double>& values)
+template <typename TYPE1>
+TYPE1 calculateMax(const std::vector<TYPE1>& values)
 {
-    double max=values[0];
+    TYPE1 max=values[0];
     
     for(int i=1;i<values.size();i++)
     {
@@ -39,16 +43,16 @@ double calculateMax(const std::vector<double>& values)
     return max;
 }
 
-//template <typename type = float>
-Statistics::Stats Statistics::ComputeStatistics(const std::vector<double>& values) {
+template <typename TYPE1>
+Statistics::Stats<TYPE1> Statistics::ComputeStatistics(const std::vector<TYPE1>& values) {
     //Implement statistics here
-    struct Stats computedValues;
+    Stats<TYPE1> computedValues;
 
     if(values.size() == 0)
     {
-        computedValues.average = std::numeric_limits<float>::quiet_NaN();
-        computedValues.min = std::numeric_limits<float>::quiet_NaN();
-        computedValues.max = std::numeric_limits<float>::quiet_NaN();
+        computedValues.average = std::numeric_limits<TYPE1>::quiet_NaN();
+        computedValues.min = std::numeric_limits<TYPE1>::quiet_NaN();
+        computedValues.max = std::numeric_limits<TYPE1>::quiet_NaN();
         return computedValues;
     }
 
@@ -57,3 +61,15 @@ Statistics::Stats Statistics::ComputeStatistics(const std::vector<double>& value
     computedValues.average = calculateAverage(values);
     return computedValues;
 }
+
+template <>
+Statistics::Stats<char> Statistics::ComputeStatistics(const std::vector<char>& values) {
+    //Implement statistics here
+    Stats<char> computedValues;
+
+    computedValues.min = calculateMin(values);
+    computedValues.max = calculateMax(values);
+    computedValues.average = std::numeric_limits<double>::quiet_NaN();
+    return computedValues;
+}
+
